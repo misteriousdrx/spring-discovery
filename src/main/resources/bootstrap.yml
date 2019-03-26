@@ -1,0 +1,32 @@
+server:
+  port: 8061
+  
+spring:
+  application:
+    name: discovery-service
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+#eureka:
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#  datacenter: Local DataCenter
+#  environment: Production
+#  server:
+#    enableSelfPreservation: false  
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+        - shutdown
